@@ -21,7 +21,7 @@ public class Palindrome {
         // Char Array
         char[] text = textString.toCharArray();
         // Stack
-        Stack<Character> stack = new Stack<Character>();
+        Stack<Character> stack = new Stack<>();
         
         Stack<Integer> rec_stack = new Stack<Integer>();
         

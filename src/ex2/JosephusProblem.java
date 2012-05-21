@@ -18,6 +18,26 @@ public class JosephusProblem {
         return num + " ";
     }
     
+    public static <T> Queue<T> josephus2(T[] children, int numbSyl) {
+
+        Queue<T> live = new Queue<T>();
+        Queue<T> dead = new Queue<T>();
+
+        for (int i = 0; i < children.length; ++i) {
+            live.enqueue(children[i]);
+        }
+
+        while (!live.is_empty()) {
+            for (int i = 0; i < numbSyl - 1; ++i)
+                live.enqueue(live.dequeue());
+            dead.enqueue(live.dequeue());
+        }
+
+        return dead;
+
+    }
+    
+    
     public static <T> Queue<T> josephus(T[] children, int numbSyl) {
         Queue<T> queue = new Queue<T>();
         int pos = -1;
@@ -47,7 +67,7 @@ public class JosephusProblem {
         for (int i = 0; i < array.length; i++) {
             array[i] = new JosephusProblem(i);
         }
-        System.out.println(josephus(array, 2).toString());
+        System.out.println(josephus2(array, 2).toString());
     }
 
 }
